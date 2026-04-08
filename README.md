@@ -61,7 +61,7 @@ AI/ML 프레임워크 및 관련 도구를 학습하고 있습니다.
 | 프로젝트 | 설명 | 기술 |
 |---|---|---|
 | [Qualcom AI 경량화 대회 (진행 중)](https://github.com/lpcvc-2026-CNU) | 온디바이스 AI 모델 경량화 — 대회 종료 후 공개 예정 | PyTorch, ONNX |
-| 공항 데이터베이스 *(레포 준비 중)* | Oracle 기반 공항 DB 설계 및 UI 구현 | Oracle, SQL |
+| [공항 데이터베이스](https://github.com/rhyskim/AirLine_DB) | Oracle 기반 공항 DB 설계 및 UI 구현 | Oracle, SQL |
 | OCaml로 구현한 C 인터프리터 *(레포 준비 중)* | OCaml로 C 언어의 핵심 기능을 직접 구현 | OCaml |
 | 스타벅스 고객 클러스터링 *(준비 중)* | 고객 데이터 클러스터링을 통한 맞춤형 서비스 제안 | Python, scikit-learn |
 | 드론 농작물 병해 분류 AI *(준비 중)* | 드론 촬영 이미지 기반 작물 병해 분류 모델 | PyTorch, CV |
