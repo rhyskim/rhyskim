@@ -47,14 +47,7 @@
 <!-- 대표 화면 1장 -->
 <p align="center">
   <img width="300" height="600" alt="Screenshot_20260822_144545_Gallery" src="https://github.com/user-attachments/assets/6675fa99-011f-404e-9a9d-3d9ea8a8e7b0" alt="Seoul Landmark Assistant 메인 화면" />
-
-<div align="center">
-</p>
-<!-- 보조 화면 2장 (없으면 이 블록 삭제) -->
-<p align="center">
   <img width="300" height="600" alt="Screenshot_20260822_144605_Gallery" src="https://github.com/user-attachments/assets/5486aed2-d321-451c-9486-5ea9781726a8" alt="랜드마크 인식 결과 화면" />
-  
-</p>
 
 ![Inference](https://img.shields.io/badge/Inference-On--Device-238636?style=flat-square)
 ![Model](https://img.shields.io/badge/MobileCLIP2--S3-FP16-8E75B2?style=flat-square)
