@@ -53,7 +53,6 @@
 <!-- 보조 화면 2장 (없으면 이 블록 삭제) -->
 <p align="center">
   <img src="assets/projects/landmark-recognize.png" alt="랜드마크 인식 결과 화면" width="300"/>
-  <img src="assets/projects/landmark-admin.png" alt="관리자 대시보드 화면" width="300"/>
 </p>
 
 ![Inference](https://img.shields.io/badge/Inference-On--Device-238636?style=flat-square)
