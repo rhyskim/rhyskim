@@ -77,10 +77,7 @@
 <sub><!-- TODO: 기간 · 팀 인원 / 담당 역할 --> 팀 프로젝트 · 담당: DB 설계 · 백엔드</sub>
 
 <p align="center">
-  <img src="assets/projects/airline-main.png" alt="CNU Airline 메인 화면" width="620"/>
-</p>
-<p align="center">
-  <img src="assets/projects/airline-search.png" alt="항공편 검색 화면" width="300"/>
+  <img width="900" height="440" alt="image" src="https://github.com/user-attachments/assets/5f130535-734c-40f8-afee-b675c0fa479d" alt="항공편 검색 화면" />
   <img src="assets/projects/airline-admin.png" alt="관리자 대시보드 화면" width="300"/>
 </p>
 
