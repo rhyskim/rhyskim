@@ -1,6 +1,3 @@
-<img width="1079" height="2400" alt="Screenshot_20260822_144545_Gallery" src="https://github.com/user-attachments/assets/6675fa99-011f-404e-9a9d-3d9ea8a8e7b0" />
-<div align="center">
-
 # 김민재 · Coffee_Driven_Dev
 
 ### AI를 실제 서비스에 붙이는 백엔드 · 웹 개발자를 목표로 합니다
@@ -49,13 +46,14 @@
 
 <!-- 대표 화면 1장 -->
 <p align="center">
-  <img src="assets/projects/landmark-main.png" alt="Seoul Landmark Assistant 메인 화면" width="620"/>
-  <img width="620" height="1200" alt="Screenshot_20260822_144545_Gallery" src="https://github.com/user-attachments/assets/6675fa99-011f-404e-9a9d-3d9ea8a8e7b0" alt="Seoul Landmark Assistant 메인 화면" />
+  <img width="300" height="600" alt="Screenshot_20260822_144545_Gallery" src="https://github.com/user-attachments/assets/6675fa99-011f-404e-9a9d-3d9ea8a8e7b0" alt="Seoul Landmark Assistant 메인 화면" />
+
 <div align="center">
 </p>
 <!-- 보조 화면 2장 (없으면 이 블록 삭제) -->
 <p align="center">
-  <img src="assets/projects/landmark-recognize.png" alt="랜드마크 인식 결과 화면" width="300"/>
+  <img width="300" height="600" alt="Screenshot_20260822_144605_Gallery" src="https://github.com/user-attachments/assets/5486aed2-d321-451c-9486-5ea9781726a8" alt="랜드마크 인식 결과 화면" />
+  
 </p>
 
 ![Inference](https://img.shields.io/badge/Inference-On--Device-238636?style=flat-square)
