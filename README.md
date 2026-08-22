@@ -74,7 +74,7 @@
 
 ## 2. CNU Airline — 공항 예약 시스템
 
-<sub><!-- TODO: 기간 · 팀 인원 / 담당 역할 --> 팀 프로젝트 · 담당: DB 설계 · 백엔드</sub>
+<sub>< 개인 프로젝트 · 범위: 다이어그램을 통한 DB의 개념적, 논리적, 물리적 설계 · 백엔드 · 프론트엔드 </sub>
 
 <p align="center">
   <img width="900" height="440" alt="image" src="https://github.com/user-attachments/assets/5f130535-734c-40f8-afee-b675c0fa479d" alt="항공편 검색 화면" />
