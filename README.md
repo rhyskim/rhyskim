@@ -1,3 +1,4 @@
+<img width="1079" height="2400" alt="Screenshot_20260822_144545_Gallery" src="https://github.com/user-attachments/assets/6675fa99-011f-404e-9a9d-3d9ea8a8e7b0" />
 <div align="center">
 
 # 김민재 · Coffee_Driven_Dev
@@ -49,6 +50,8 @@
 <!-- 대표 화면 1장 -->
 <p align="center">
   <img src="assets/projects/landmark-main.png" alt="Seoul Landmark Assistant 메인 화면" width="620"/>
+  <img width="1079" height="2400" alt="Screenshot_20260822_144545_Gallery" src="https://github.com/user-attachments/assets/6675fa99-011f-404e-9a9d-3d9ea8a8e7b0" alt="Seoul Landmark Assistant 메인 화면" />
+<div align="center">
 </p>
 <!-- 보조 화면 2장 (없으면 이 블록 삭제) -->
 <p align="center">
