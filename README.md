@@ -34,7 +34,7 @@
 
 - **Kakao Tech Campus** — Kakao가 주최하는 부트캠프로 프론트엔드/백엔드/AI Agent 설계/프로젝트의 기획부터 배포까지의 전 과정을 학습 중입니다.
 - On-Device AI를 활용한 보안에 문제 없이 **검색 가능한 갤러리** 개발 프로젝트 진행 중
-- **브릿지 프로그램 개발 중** - 세부 내용은 프로젝트 배포 후 공개 예정 
+- **브릿지 프로그램 운영 중** - 자세한 내용은 아래 RoastLink 프로젝트 참고
 
 ---
 
@@ -175,6 +175,40 @@
 - <!-- TODO: 정량 결과 또는 현재 진행 상태 1줄 -->
 
 > 대회 진행 중인 프로젝트로, 제출 이후 공개 가능한 구현과 결과를 업데이트할 예정입니다.
+
+---
+
+## 6. RoastLink — 커피 로스터기 ↔ Artisan 브리지 프로그램
+
+<sub>2026.07 ~ 진행 중 · 개인 프로젝트 · 담당: BLE 프로토콜 리버스 엔지니어링 · 백엔드(비동기 통신) · GUI · 배포 인프라</sub>
+
+<!-- TODO: 실제 프로그램 화면 스크린샷 1~2장 추가 (기기 연결 화면, 온도 그래프가 보이는 Artisan 연동 화면) -->
+
+![Platform](https://img.shields.io/badge/Platform-Windows-0078D6?style=flat-square&logo=windows&logoColor=white)
+![Connectivity](https://img.shields.io/badge/Connectivity-Bluetooth%20LE-0082FC?style=flat-square&logo=bluetooth&logoColor=white)
+![Protocol](https://img.shields.io/badge/BLE%20Protocol-Reverse--Engineered-8E75B2?style=flat-square)
+![Status](https://img.shields.io/badge/Status-Beta%20·%20Live-238636?style=flat-square)
+
+스마트 커피 로스터기 'Sandbox Smart R1'(BLE 통신)과 로스팅 프로파일 소프트웨어 'Artisan'을 비개발자도 쉽게 연결해 쓸 수 있게 해주는 크로스플랫폼 GUI 프로그램입니다.
+
+- **정품 앱의 BLE 프로토콜이 전혀 문서화돼 있지 않아서**, Android 개발자 옵션의 Bluetooth HCI snoop log를 직접 캡처해 btsnoop 포맷을 별도 파서 없이 바이트 단위로 분석하고, 명령·응답 프레임(HEAT/DRAW/DRUM과 그 ACK인 XAOK/XBOK/XDOK, 냉각을 실제로 트리거하는 조건 등)을 역공학으로 확정했습니다.
+- **로스터기는 고온 발열체를 원격 제어하는 물리 장치라는 점을 기능보다 우선시해서**, 과열 시 자동 정지, BLE 링크 이탈 시 30초 자동 재연결, Artisan 연결이 끊긴 채 방치되면 자동 냉각 같은 하드웨어 안전 규약을 먼저 설계하고 그 위에 기능을 얹었습니다.
+- **BLE 쓰기가 로컬에서 성공해도 로스터기가 실제로 명령을 받았다는 보장이 없는 "좀비 링크" 현상**을 실기 테스트 중 발견하고, 명령별 ACK 프레임 수신 여부를 디바운스해 감지하는 워치독을 추가해 소프트웨어 레벨에서 탐지 가능하게 만들었습니다.
+- **asyncio 기반 BLE/웹소켓 통신과 GUI의 블로킹 이벤트 루프가 한 스레드에서 충돌하는 문제**를, 통신 루프를 별도 백그라운드 스레드로 분리하고 Queue + GUI 프레임워크의 스케줄러로만 상호작용하도록 설계해 해결했습니다.
+- 비개발자가 Artisan의 복잡한 WebSocket 설정을 직접 타이핑하지 않아도 되도록, 앱 내 설정 가이드에 값별 [복사] 버튼과 Artisan 설정 파일(.aset) 자동 적용을 함께 제공했습니다.
+
+<p>
+  <img src="https://img.shields.io/badge/Python-3776AB?style=flat-square&logo=python&logoColor=white" alt="Python"/>
+  <img src="https://img.shields.io/badge/customtkinter-GUI-1f6feb?style=flat-square" alt="customtkinter"/>
+  <img src="https://img.shields.io/badge/bleak-BLE-0082FC?style=flat-square" alt="bleak"/>
+  <img src="https://img.shields.io/badge/websockets-Artisan%20Bridge-6e7681?style=flat-square" alt="websockets"/>
+  <img src="https://img.shields.io/badge/PyInstaller-Packaging-3776AB?style=flat-square" alt="PyInstaller"/>
+</p>
+
+> **소스는 비공개입니다.** v1은 계속 무료로 배포하되 이후 버전(v2+)을 유료 전환할 계획이라, 지금 단계에서는 코드 자체를 공개하지 않기로 했습니다. 대신 아래 실제로 동작하는 배포판과 사이트로 결과물을 확인하실 수 있고, 코드 리뷰가 필요하시면(예: 면접 과정) 개인적으로 공유해 드릴 수 있습니다.
+
+[![Live Site](https://img.shields.io/badge/Live%20Site-roastlink.rhyskim.workers.dev-FF6B35?style=for-the-badge&logo=cloudflare&logoColor=white)](https://roastlink.rhyskim.workers.dev)
+[![Download](https://img.shields.io/badge/Download-v1.0.0--beta-181717?style=for-the-badge&logo=windows11&logoColor=white)](https://github.com/rhyskim/roastlink/releases/latest)
 
 ---
 
