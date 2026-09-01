@@ -183,7 +183,9 @@
 
 <sub>2026.07 ~ 진행 중 · 개인 프로젝트 · 담당: BLE 프로토콜 리버스 엔지니어링 · 백엔드(비동기 통신) · GUI · 배포 인프라</sub>
 
-<!-- TODO: 실제 프로그램 화면 스크린샷 1~2장 추가 (기기 연결 화면, 온도 그래프가 보이는 Artisan 연동 화면) -->
+<p align="center">
+  <img src="assets/projects/roastlink-app.png" alt="RoastLink와 Artisan 연동 화면 — 실시간 온도 그래프와 연결 상태" width="900"/>
+</p>
 
 ![Platform](https://img.shields.io/badge/Platform-Windows-0078D6?style=flat-square&logo=windows&logoColor=white)
 ![Connectivity](https://img.shields.io/badge/Connectivity-Bluetooth%20LE-0082FC?style=flat-square&logo=bluetooth&logoColor=white)
