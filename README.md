@@ -194,6 +194,38 @@ GitHub 스타 1만 개, Microsoft Store에 배포되는 C# 데스크톱 앱 **Ru
 
 ---
 
+## 6. Multi-Agent Scheduler — LangChain 멀티 에이전트 일정 조율
+
+<sub>개인 프로젝트 · 담당: 아키텍처 설계·전체 구현</sub>
+
+<p align="center">
+  <img src="assets/projects/scheduler-chat.png" alt="Multi-Agent Scheduler 채팅 화면 — 자연어로 개인 일정 생성·삭제" width="620"/>
+</p>
+<p align="center">
+  <img src="assets/projects/scheduler-chat2.png" alt="자연어 후속 질문에 답하는 화면" width="620"/>
+</p>
+
+![Framework](https://img.shields.io/badge/LangChain%20v1-create__agent-1C3C3C?style=flat-square)
+![Pattern](https://img.shields.io/badge/Pattern-Supervisor%20%2B%20Sub--agents-238636?style=flat-square)
+![DB](https://img.shields.io/badge/SQLite%20%2B%20ChromaDB-1f6feb?style=flat-square)
+
+- **supervisor가 개인 일정 담당 Nana와 그룹 조율 담당 Kana, 두 하위 에이전트에게 요청을 위임**하는 구조로, 자연어 일정 요청을 구조화·저장하고 필요하면 과거 기록을 검색하며 외부 멤버 일정까지 모아 공통 시간을 찾습니다.
+- **데이터 성격에 따라 저장소를 다르게 뒀습니다** — 정확한 값이 필요한 일정·대화·감사 로그는 SQLite에, 의미 검색이 필요한 참고자료·대화 기록은 ChromaDB에 임베딩으로 저장합니다. 대화는 8메시지 단위로 청크를 쪼개고 내용이 안 바뀐 청크는 fingerprint로 걸러 재임베딩하지 않도록 해 비용이 대화 길이 제곱으로 늘어나는 것을 막았습니다.
+- **LLM structured output이 실패하는 지점을 코드로 막았습니다** — 프록시 모델이 순정 structured output을 완전히 지원하지 않아 JSON 뒤에 잉여 데이터가 붙는 문제를, 스키마를 tool 호출로 강제하는 방식으로 우회했습니다. "차차주 화요일" 같은 상대 날짜도 LLM에게는 의미(주 오프셋·요일)만 구조화시키고, 실제 날짜 계산은 Python이 결정적으로 수행하도록 분리했습니다.
+- **이 문제가 챗봇이 아니라 에이전트여야 하는 이유이기도 합니다** — 공통 가능 시간을 찾는 tool은 최적 시간을 스스로 계산하지 않습니다. tool description으로 "후보를 고르고 최종 시간을 선택하는 판단은 항상 LLM이 하고, 코드는 그 선택이 실제로 겹치지 않는지 검증만 한다"는 계약을 강제해, 단발성 응답이 아니라 LLM이 도구 호출 결과를 보고 다음 판단을 이어가는 루프가 필요하게 설계했습니다.
+
+<p>
+  <img src="https://img.shields.io/badge/Python-3776AB?style=flat-square&logo=python&logoColor=white" alt="Python"/>
+  <img src="https://img.shields.io/badge/LangChain-1C3C3C?style=flat-square&logo=langchain&logoColor=white" alt="LangChain"/>
+  <img src="https://img.shields.io/badge/Gradio-FF7C00?style=flat-square&logo=gradio&logoColor=white" alt="Gradio"/>
+  <img src="https://img.shields.io/badge/ChromaDB-purple?style=flat-square" alt="ChromaDB"/>
+  <img src="https://img.shields.io/badge/MCP-Model%20Context%20Protocol-6e7681?style=flat-square" alt="MCP"/>
+</p>
+
+[![Repo](https://img.shields.io/badge/Repository-181717?style=for-the-badge&logo=github&logoColor=white)](https://github.com/rhyskim/Multi-Agent-Scheduler)
+
+---
+
 <details>
 <summary><strong> More Projects — 추가 프로젝트 4개 펼쳐보기</strong></summary>
 
