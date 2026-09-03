@@ -103,7 +103,6 @@ GitHub 스타 1만 개, Microsoft Store에 배포되는 C# 데스크톱 앱 **Ru
 - Next.js App Router 기반으로 **일반 사용자 / 관리자 역할 분리 인증**을 구현했습니다.
 - 예매 완료 시 **e-티켓 자동 이메일 발송**, 관리자용 **운영 통계 대시보드**를 구성했습니다.
 - 스키마와 샘플 데이터를 `/database/create_and_insert.sql`에 정리해 누구나 동일한 환경에서 재현할 수 있게 했습니다.
-<!-- TODO: 정량 결과 1줄 추가 (예: 테이블 __개, 트리거 __개, 항공편 검색 응답시간 등) -->
 
 <p>
   <img src="https://img.shields.io/badge/Next.js%2015-000000?style=flat-square&logo=nextdotjs&logoColor=white" alt="Next.js 15"/>
