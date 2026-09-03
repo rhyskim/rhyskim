@@ -201,9 +201,6 @@ GitHub 스타 1만 개, Microsoft Store에 배포되는 C# 데스크톱 앱 **Ru
 <p align="center">
   <img src="assets/projects/scheduler-chat.png" alt="Multi-Agent Scheduler 채팅 화면 — 자연어로 개인 일정 생성·삭제" width="620"/>
 </p>
-<p align="center">
-  <img src="assets/projects/scheduler-chat2.png" alt="자연어 후속 질문에 답하는 화면" width="620"/>
-</p>
 
 ![Framework](https://img.shields.io/badge/LangChain%20v1-create__agent-1C3C3C?style=flat-square)
 ![Pattern](https://img.shields.io/badge/Pattern-Supervisor%20%2B%20Sub--agents-238636?style=flat-square)
