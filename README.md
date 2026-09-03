@@ -202,6 +202,21 @@ GitHub 스타 1만 개, Microsoft Store에 배포되는 C# 데스크톱 앱 **Ru
   <img src="assets/projects/scheduler-chat.png" alt="Multi-Agent Scheduler 채팅 화면 — 자연어로 개인 일정 생성·삭제" width="620"/>
 </p>
 
+```mermaid
+flowchart TD
+    U[사용자] --> S[supervisor]
+    S -->|개인 일정 · 저장 · RAG| N[nana_agent]
+    S -->|외부 멤버 일정 · 그룹 조율| K[kana_agent]
+
+    N --> NT[personal schedule tools<br/>structured save · RAG search]
+    K --> KT[external context tools<br/>MCP · find_common_available_slots<br/>decide_final_slot]
+
+    NT --> DB[(SQLite<br/>app store)]
+    NT --> VEC[(ChromaDB<br/>embeddings)]
+    KT --> MCP[MCP server<br/>subprocess]
+    MCP --> EXT[(SQLite<br/>external store)]
+```
+
 ![Framework](https://img.shields.io/badge/LangChain%20v1-create__agent-1C3C3C?style=flat-square)
 ![Pattern](https://img.shields.io/badge/Pattern-Supervisor%20%2B%20Sub--agents-238636?style=flat-square)
 ![DB](https://img.shields.io/badge/SQLite%20%2B%20ChromaDB-1f6feb?style=flat-square)
