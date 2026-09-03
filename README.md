@@ -119,18 +119,15 @@ GitHub 스타 1만 개, Microsoft Store에 배포되는 C# 데스크톱 앱 **Ru
 
 ## 3. LPCVC 2026 Track 1 — 온디바이스 AI 경량화 대회
 
-<sub><!-- TODO: 기간 · 팀 인원 / 담당 역할 --> Qualcomm LPCVC 2026 </sub>
+<sub><!-- TODO: 기간 · 팀 인원 / 담당 역할 --> Qualcomm LPCVC 2026 · 종료</sub>
 
-<!-- TODO: 파이프라인 다이어그램 준비되면 assets/projects/lpcvc-pipeline.png로 추가 -->
-
-![Status](https://img.shields.io/badge/Status-In%20Progress-d4a72c?style=flat-square)
+![Status](https://img.shields.io/badge/Status-Completed-6e7681?style=flat-square)
 ![Task](https://img.shields.io/badge/Task-Image--Text%20Retrieval-1f6feb?style=flat-square)
 ![Target](https://img.shields.io/badge/Target-Qualcomm%20AI%20Hub-8E75B2?style=flat-square)
 
-- **Knowledge Distillation → ONNX Export → Qualcomm AI Hub 컴파일/프로파일링 → 추론**으로 이어지는 전체 파이프라인을 구성했습니다.
-- ViT-S-16, MobileCLIP2-S4(듀얼 티처 distillation), SigLIP2-Base **세 가지 주력 학생 모델**로 정확도-지연시간 트레이드오프를 비교하고 있습니다(MobileNetV4 계열도 초기 후보로 실험했으나 목표 정확도에 미치지 못해 비교 대상에서 제외).
-- <!-- TODO: 정량 결과 1줄 추가 (예: 베이스라인 대비 정확도 변화, 지연시간(ms), 모델 크기(MB), 대회 내 순위) -->
-- <!-- TODO: 트레이드오프 1줄 추가 -->
+- **Knowledge Distillation → ONNX Export → Qualcomm AI Hub 컴파일/프로파일링 → 추론**으로 이어지는 학습-경량화-배포 파이프라인을 구성했습니다.
+- ViT-S-16, MobileCLIP2-S4, SigLIP2-Base 세 모델을 학습 대상으로 삼아, **대회에 쓰인 대형 학습 데이터셋을 COCO·Visual Genome 등 여러 소스에서 모아 라벨링 형식을 통일하는 작업을 직접 맡았습니다.**
+- 다만 **경량화 결과가 Qualcomm이 제시한 베이스라인 모델과 뚜렷한 차이를 보이지 못해**, 목표했던 성능 개선에는 도달하지 못한 채 대회를 마쳤습니다.
 
 <p>
   <img src="https://img.shields.io/badge/PyTorch-EE4C2C?style=flat-square&logo=pytorch&logoColor=white" alt="PyTorch"/>
