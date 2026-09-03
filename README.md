@@ -8,9 +8,7 @@
 
 <br/>
 
-<!-- TODO: GPA/자격증/어학 등 공개할 지표가 있다면 아래 형식으로 배지 추가
-![GPA](https://img.shields.io/badge/GPA-0.00%20/%204.5-1f6feb?style=for-the-badge)
--->
+![Recent GPA](https://img.shields.io/badge/최근%201년%20학점-4.18%20%2F%204.5-238636?style=for-the-badge)
 
 [![Blog](https://img.shields.io/badge/Blog-rhyskim.github.io-000000?style=for-the-badge&logo=github&logoColor=white)](https://rhyskim.github.io/)
 [![Email](https://img.shields.io/badge/Email-rhyskim@naver.com-03C75A?style=for-the-badge&logo=naver&logoColor=white)](mailto:rhyskim@naver.com)
@@ -27,7 +25,7 @@
 개발할 때 아래 기준을 지키려 합니다.
 
 - **AI는 기능이 아니라 서비스의 일부로 통합하기** — 추론을 어디서 실행할지, 실패하면 무엇을 보장할지부터 설계
-- **DB·서버 계층에서 무결성을 보장하기** — 애플리케이션 로직만이 아니라 제약·트리거·트랜잭션으로도 지키기
+- **DB·서버 계층에서 무결성을 보장하기** — 애플리케이션 로직만이 아니라 제약·트랜잭션·격리 수준으로도 지키기
 - **궁금한 내용은 끝까지 알아내기** — 동작 원리를 이해하지 못한 코드는 남기지 않기
 
 ### Currently Working On
@@ -36,6 +34,20 @@
 - **Kakao Tech Campus** — Kakao가 주최하는 부트캠프로 프론트엔드/백엔드/AI Agent 설계/프로젝트의 기획부터 배포까지의 전 과정을 학습 중입니다.
 - On-Device AI를 활용한 보안에 문제 없이 **검색 가능한 갤러리** 개발 프로젝트 진행 중
 
+
+---
+
+## 🌱 거름이 된 실패에 대하여
+
+프로젝트를 소개하기 전에, 머지되지 못한 PR 하나를 먼저 이야기하고 싶습니다.
+
+GitHub 스타 1만 개, Microsoft Store에 배포되는 C# 데스크톱 앱 **RunCat365**에 다국어 지원(i18n) 구조를 도입하는 PR을 냈습니다. — 이슈 [#225](https://github.com/runcat-dev/RunCat365/issues/225), PR [#255](https://github.com/runcat-dev/RunCat365/pull/255) · 9개 파일 · **+605 / −45**
+
+앱 곳곳에 영어로 박혀 있던 UI 문자열을 리소스 파일로 빼내 어떤 언어든 추가할 수 있게 만드는 작업이었습니다. 그 과정에서 **표시 텍스트와 아이콘 리소스 키를 같은 함수(`GetString()`)가 겸하고 있다는 걸 발견**했고, 텍스트를 한국어로 바꾸자 아이콘 키까지 오염돼 앱의 핵심인 애니메이션이 멈추는 버그를 만났습니다. 표시용(`GetString`)과 식별자용(`GetResourceName`) 접근자를 분리해 해결하고, 리소스 조회가 실패해도 앱이 죽지 않도록 기본 아이콘 폴백을 더했습니다.
+
+하지만 원작자에게 **"문구가 호출 지점마다 흩어져 있어 중앙에서 관리할 구조가 필요하다"**는 리뷰를 받았습니다. 실제로 제 코드에는 라벨 하나가 누락돼 있었지만 저는 그것을 발견조차 하지 못하고 있었습니다. 원작자가 이후 "다국어 지원 기반은 마련됐으니, 계속할 의향이 있으면 리베이스해서 진행해달라"고 남겼지만 제때 대응하지 못했고, PR은 2026-03-03 결국 머지되지 못한 채 닫혔습니다. 한국어 지원은 그 뒤 다른 기여자의 PR([#312](https://github.com/runcat-dev/RunCat365/pull/312))로 들어갔습니다. 그래도 저는 **"변하는 값은 한 곳에서 통제해야 한다"**는 원칙을 제 코드로 체득했습니다.
+
+> 이 깨달음은 이후 온디바이스 앱의 다국어를 만들 때, ko·en·zh·ja 네 언어의 번역을 단일 맵(`app_translations.dart`)에 모으고 UI는 키로만 조회하는 중앙 관리형 구조로 이어졌습니다.
 
 ---
 
@@ -75,18 +87,19 @@
 
 ## 2. CNU Airline — 공항 예약 시스템
 
-<sub>< 개인 프로젝트 · 범위: 다이어그램을 통한 DB의 개념적, 논리적, 물리적 설계 · 백엔드 · 프론트엔드 </sub>
+<sub>개인 프로젝트 · 범위: 다이어그램을 통한 DB의 개념적, 논리적, 물리적 설계 · 백엔드 · 프론트엔드</sub>
 
 <p align="center">
   <img width="900" height="440" alt="image" src="https://github.com/user-attachments/assets/5f130535-734c-40f8-afee-b675c0fa479d" alt="항공편 검색 화면" />
-  <img src="assets/projects/airline-admin.png" alt="관리자 대시보드 화면" width="300"/>
 </p>
+<!-- TODO: 관리자 대시보드 스크린샷 준비되면 assets/projects/airline-admin.png로 추가 -->
 
 ![DB](https://img.shields.io/badge/Oracle-OCI-F80000?style=flat-square)
-![Integrity](https://img.shields.io/badge/Integrity-Trigger%20%2B%20Constraint-238636?style=flat-square)
+![Integrity](https://img.shields.io/badge/Integrity-Constraint%20%2B%20Conditional%20UPDATE-238636?style=flat-square)
 ![Role](https://img.shields.io/badge/Role-Admin%20%2F%20User-1f6feb?style=flat-square)
 
-- **좌석 중복 예약 같은 무결성 문제는 애플리케이션 로직만으로는 완전히 막을 수 없다고 판단해**, Oracle의 참조 무결성(cascading delete)과 이벤트 트리거로 좌석 잔여석을 실시간 동기화하도록 DB 계층에서 보장했습니다.
+- **좌석 중복 예약 같은 무결성 문제는 애플리케이션 로직만으로 완전히 막을 수 없다고 판단해**, 좌석 잔여석은 조건부 UPDATE(`잔여석 - 1 WHERE 잔여석 > 0`)로 감소시키되, 어떤 경로로 우회되더라도 음수가 되지 않도록 `CHECK (NO_OF_SEATS >= 0)` 제약을 DB의 최종 방어선으로 두었습니다.
+- **참조 무결성은 관계별로 차등 적용했습니다** — 항공편·좌석·회원이 삭제되면 관련 예약도 `ON DELETE CASCADE`로 함께 정리하고, 취소(CANCEL) 이력은 감사 로그이므로 삭제되지 않도록 의도적으로 보존(RESTRICT)했습니다.
 - Next.js App Router 기반으로 **일반 사용자 / 관리자 역할 분리 인증**을 구현했습니다.
 - 예매 완료 시 **e-티켓 자동 이메일 발송**, 관리자용 **운영 통계 대시보드**를 구성했습니다.
 - 스키마와 샘플 데이터를 `/database/create_and_insert.sql`에 정리해 누구나 동일한 환경에서 재현할 수 있게 했습니다.
@@ -108,17 +121,14 @@
 
 <sub><!-- TODO: 기간 · 팀 인원 / 담당 역할 --> Qualcomm LPCVC 2026 · 진행 중</sub>
 
-<p align="center">
-  <img src="assets/projects/lpcvc-pipeline.png" alt="학습-경량화-배포 파이프라인 다이어그램" width="620"/>
-</p>
+<!-- TODO: 파이프라인 다이어그램 준비되면 assets/projects/lpcvc-pipeline.png로 추가 -->
 
 ![Status](https://img.shields.io/badge/Status-In%20Progress-d4a72c?style=flat-square)
 ![Task](https://img.shields.io/badge/Task-Image--Text%20Retrieval-1f6feb?style=flat-square)
 ![Target](https://img.shields.io/badge/Target-Qualcomm%20AI%20Hub-8E75B2?style=flat-square)
 
 - **Knowledge Distillation → ONNX Export → Qualcomm AI Hub 컴파일/프로파일링 → 추론**으로 이어지는 전체 파이프라인을 구성했습니다.
-- ViT-S-16, MobileCLIP2-S4(듀얼 티처 distillation), SigLIP2-Base 세 가지 학생 모델로 정확도-지연시간 트레이드오프를 비교하고 있습니다.
-- **Seoul Landmark Assistant 앱에 필요한 온디바이스 추론 경험**이 이 대회에서 모델을 경량화하고 프로파일링하는 과정과 직접 연결됩니다.
+- ViT-S-16, MobileCLIP2-S4(듀얼 티처 distillation), SigLIP2-Base **세 가지 주력 학생 모델**로 정확도-지연시간 트레이드오프를 비교하고 있습니다(MobileNetV4 계열도 초기 후보로 실험했으나 목표 정확도에 미치지 못해 비교 대상에서 제외).
 - <!-- TODO: 정량 결과 1줄 추가 (예: 베이스라인 대비 정확도 변화, 지연시간(ms), 모델 크기(MB), 대회 내 순위) -->
 - <!-- TODO: 트레이드오프 1줄 추가 -->
 
@@ -134,11 +144,9 @@
 
 ## 4. MiniC Interpreter & Type Checker in OCaml
 
-<sub><!-- TODO: 기간 · 개인/팀 과제 여부 --> 개인 프로젝트</sub>
+<sub>2025.05 ~ 2025.06 · 개인 프로젝트</sub>
 
-<p align="center">
-  <img src="assets/projects/minic-run.png" alt="MiniC 인터프리터 실행 화면" width="620"/>
-</p>
+<!-- TODO: 실행 터미널 캡처 준비되면 assets/projects/minic-run.png로 추가 -->
 
 ![Language](https://img.shields.io/badge/OCaml-EC6813?style=flat-square&logo=ocaml&logoColor=white)
 ![Pipeline](https://img.shields.io/badge/Lexer→Parser→TypeChecker→Interpreter-6e7681?style=flat-square)
@@ -146,7 +154,6 @@
 - C언어의 핵심 기능을 추상화한 MiniC 언어의 **어휘 분석부터 실행까지 컴파일러 전 과정**을 `ocamllex`·`menhir`로 직접 구현했습니다.
 - 실행 전 타입 오류를 잡아내는 **정적 타입 체커**와, Environment-Store 모델 기반의 **메모리·포인터 연산**을 구현했습니다.
 - 배열, 튜플, 포인터, 중첩 함수 등 복잡한 데이터 구조를 지원해 실제 C의 동작을 재현했습니다.
-- <!-- TODO: 정량 결과 1줄 추가 (예: 테스트 케이스 __개 통과, 지원 문법 범위) -->
 
 <p>
   <img src="https://img.shields.io/badge/OCaml-EC6813?style=flat-square&logo=ocaml&logoColor=white" alt="OCaml"/>
@@ -160,7 +167,7 @@
 
 ## 5. KB 머니룰 기반 안심보이스 — 시니어 금융 Agentic AI
 
-<sub>2026 KB AI Challenge · 팀 프로젝트 · 진행 중</sub>
+<sub>2026 KB AI Challenge · 팀 프로젝트 · 프론트/백엔드 구분 없이 이슈 단위로 맡아 전 영역 개발 · 진행 중</sub>
 
 <!-- TODO: 대회 규정상 공개 가능한 스크린샷이 있다면 추가. 없으면 이 블록 삭제
 <p align="center">
@@ -172,7 +179,7 @@
 ![Domain](https://img.shields.io/badge/Domain-Senior%20FinTech-1f6feb?style=flat-square)
 
 - 시니어 사용자가 음성·텍스트로 금융 업무를 요청할 수 있는 **Agentic AI**를 팀 단위로 개발하고 있습니다.
-- <!-- TODO: 실제 담당 역할과 구현 내용으로 구체화 (예: LLM은 의도 파악만, 실행 승인은 결정론적 규칙이 담당하도록 권한 분리 등) -->
+- **역할을 프론트엔드/백엔드로 고정하지 않고 이슈 단위로 배분해**, 담당 이슈의 화면부터 API까지 각자 끝까지 책임지는 방식으로 개발했습니다.
 - <!-- TODO: 정량 결과 또는 현재 진행 상태 1줄 -->
 
 > 대회 진행 중인 프로젝트로, 제출 이후 공개 가능한 구현과 결과를 업데이트할 예정입니다.
