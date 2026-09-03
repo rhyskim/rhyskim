@@ -141,7 +141,7 @@ GitHub 스타 1만 개, Microsoft Store에 배포되는 C# 데스크톱 앱 **Ru
 
 ## 4. KB 머니룰 기반 안심보이스 — 시니어 금융 Agentic AI
 
-<sub>2026 KB AI Challenge · 팀 프로젝트 · 프론트/백엔드 구분 없이 이슈 단위로 맡아 전 영역 개발 · 종료</sub>
+<sub>제8회 Future Finance AI Challenge · 3인 팀 프로젝트 · 프론트/백엔드 구분 없이 이슈 단위로 맡아 전 영역 개발 · 종료</sub>
 
 <p align="center">
   <img src="assets/projects/kb-flow.png" alt="안심보이스 안심 홈 화면 — 잔액 확인부터 송금까지 규칙으로 통제" width="620"/>
@@ -152,7 +152,7 @@ GitHub 스타 1만 개, Microsoft Store에 배포되는 C# 데스크톱 앱 **Ru
 
 - 시니어 사용자가 음성·텍스트로 금융 업무를 요청할 수 있는 **Agentic AI**를 팀 단위로 개발했습니다.
 - **역할을 프론트엔드/백엔드로 고정하지 않고 이슈 단위로 배분해**, 담당 이슈의 화면부터 API까지 각자 끝까지 책임지는 방식으로 개발했습니다.
-- <!-- TODO: 정량 결과 또는 대회 결과(순위 등) 1줄 -->
+- Python 테스트 2,069개 통과(10 skip), Playwright E2E 21개 통과로 프로토타입의 안정성을 검증했습니다.
 
 > 대회는 종료되었으며, 공개 가능한 범위 내에서 결과를 업데이트할 예정입니다.
 
