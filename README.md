@@ -139,51 +139,26 @@ GitHub 스타 1만 개, Microsoft Store에 배포되는 C# 데스크톱 앱 **Ru
 
 ---
 
-## 4. MiniC Interpreter & Type Checker in OCaml
+## 4. KB 머니룰 기반 안심보이스 — 시니어 금융 Agentic AI
 
-<sub>2025.05 ~ 2025.06 · 개인 프로젝트</sub>
+<sub>2026 KB AI Challenge · 팀 프로젝트 · 프론트/백엔드 구분 없이 이슈 단위로 맡아 전 영역 개발 · 종료</sub>
 
-<!-- TODO: 실행 터미널 캡처 준비되면 assets/projects/minic-run.png로 추가 -->
-
-![Language](https://img.shields.io/badge/OCaml-EC6813?style=flat-square&logo=ocaml&logoColor=white)
-![Pipeline](https://img.shields.io/badge/Lexer→Parser→TypeChecker→Interpreter-6e7681?style=flat-square)
-
-- C언어의 핵심 기능을 추상화한 MiniC 언어의 **어휘 분석부터 실행까지 컴파일러 전 과정**을 `ocamllex`·`menhir`로 직접 구현했습니다.
-- 실행 전 타입 오류를 잡아내는 **정적 타입 체커**와, Environment-Store 모델 기반의 **메모리·포인터 연산**을 구현했습니다.
-- 배열, 튜플, 포인터, 중첩 함수 등 복잡한 데이터 구조를 지원해 실제 C의 동작을 재현했습니다.
-
-<p>
-  <img src="https://img.shields.io/badge/OCaml-EC6813?style=flat-square&logo=ocaml&logoColor=white" alt="OCaml"/>
-  <img src="https://img.shields.io/badge/Dune-black?style=flat-square" alt="Dune"/>
-  <img src="https://img.shields.io/badge/Menhir-6e7681?style=flat-square" alt="Menhir"/>
-</p>
-
-[![Repo](https://img.shields.io/badge/Repository-181717?style=for-the-badge&logo=github&logoColor=white)](https://github.com/rhyskim/MiniC-Interpreter-Type-Checker-in-OCaml)
-
----
-
-## 5. KB 머니룰 기반 안심보이스 — 시니어 금융 Agentic AI
-
-<sub>2026 KB AI Challenge · 팀 프로젝트 · 프론트/백엔드 구분 없이 이슈 단위로 맡아 전 영역 개발 · 진행 중</sub>
-
-<!-- TODO: 대회 규정상 공개 가능한 스크린샷이 있다면 추가. 없으면 이 블록 삭제
 <p align="center">
-  <img src="assets/projects/kb-flow.png" alt="안심보이스 서비스 흐름도" width="620"/>
+  <img src="assets/projects/kb-flow.png" alt="안심보이스 안심 홈 화면 — 잔액 확인부터 송금까지 규칙으로 통제" width="620"/>
 </p>
--->
 
-![Status](https://img.shields.io/badge/Status-In%20Progress-d4a72c?style=flat-square)
+![Status](https://img.shields.io/badge/Status-Completed-6e7681?style=flat-square)
 ![Domain](https://img.shields.io/badge/Domain-Senior%20FinTech-1f6feb?style=flat-square)
 
-- 시니어 사용자가 음성·텍스트로 금융 업무를 요청할 수 있는 **Agentic AI**를 팀 단위로 개발하고 있습니다.
+- 시니어 사용자가 음성·텍스트로 금융 업무를 요청할 수 있는 **Agentic AI**를 팀 단위로 개발했습니다.
 - **역할을 프론트엔드/백엔드로 고정하지 않고 이슈 단위로 배분해**, 담당 이슈의 화면부터 API까지 각자 끝까지 책임지는 방식으로 개발했습니다.
-- <!-- TODO: 정량 결과 또는 현재 진행 상태 1줄 -->
+- <!-- TODO: 정량 결과 또는 대회 결과(순위 등) 1줄 -->
 
-> 대회 진행 중인 프로젝트로, 제출 이후 공개 가능한 구현과 결과를 업데이트할 예정입니다.
+> 대회는 종료되었으며, 공개 가능한 범위 내에서 결과를 업데이트할 예정입니다.
 
 ---
 
-## 6. RoastLink — 커피 로스터기 ↔ Artisan 브리지 프로그램
+## 5. RoastLink — 커피 로스터기 ↔ Artisan 브리지 프로그램
 
 <sub>2026.07 ~ 배포 완료 후 버전 관리 및 운영 중 · 개인 프로젝트 · 담당: BLE 프로토콜 리버스 엔지니어링 · 백엔드(비동기 통신) · GUI · 배포 인프라</sub>
 
@@ -220,12 +195,13 @@ GitHub 스타 1만 개, Microsoft Store에 배포되는 C# 데스크톱 앱 **Ru
 ---
 
 <details>
-<summary><strong> More Projects — 추가 프로젝트 3개 펼쳐보기</strong></summary>
+<summary><strong> More Projects — 추가 프로젝트 4개 펼쳐보기</strong></summary>
 
 <br/>
 
 | 프로젝트 | 설명 | 핵심 기술 |
 | --- | --- | --- |
+| [🖥️ MiniC Interpreter & Type Checker](https://github.com/rhyskim/MiniC-Interpreter-Type-Checker-in-OCaml) | C언어 핵심 기능을 추상화한 MiniC 언어의 어휘 분석부터 실행까지 컴파일러 전 과정을 구현. 정적 타입 체커와 Environment-Store 기반 메모리·포인터 연산 포함 | OCaml, ocamllex, Menhir |
 | [🚗 자율 주행 로봇 청소기](https://github.com/rhyskim/embedded-autonomous-vehicle) | STM32F429 + FreeRTOS 기반 미로 탈출 로봇. 초음파·적외선 센서 퓨전과 PD 제어로 벽면 추종과 동적 장애물 회피 구현 | C, FreeRTOS, Embedded |
 | ☕ 스타벅스 고객 클러스터링 | 고객 데이터 클러스터링을 통한 맞춤형 서비스 제안 <!-- TODO: 저장소 공개 후 링크 연결 --> | Python, scikit-learn |
 | 🌾 드론 농작물 병해 분류 AI | 드론 촬영 이미지 기반 작물 병해 분류 모델 <!-- TODO: 저장소 공개 후 링크 연결 --> | PyTorch, CV |
@@ -242,7 +218,7 @@ GitHub 스타 1만 개, Microsoft Store에 배포되는 C# 데스크톱 앱 **Ru
 | **Web** | TypeScript · React · Next.js |
 | **Database** | Oracle · MySQL · SQLite · SQLAlchemy |
 | **AI/ML** | PyTorch · ONNX (Runtime / Export) · scikit-learn · HuggingFace |
-| **Systems** | C · OCaml · Assembly |
+| **Systems** | C · C# · OCaml · Assembly |
 | **Tools** | Git · Docker |
 
 ### Currently Learning
