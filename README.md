@@ -158,9 +158,9 @@ GitHub 스타 1만 개, Microsoft Store에 배포되는 C# 데스크톱 앱 **Ru
 
 ---
 
-## 5. RoastLink — 커피 로스터기 ↔ Artisan 브리지 프로그램
+## 5. <현재 운영 중> RoastLink — 커피 로스터기 ↔ Artisan 브리지 프로그램 
 
-<sub>2026.07 ~ 배포 완료 후 버전 관리 및 운영 중 · 개인 프로젝트 · 담당: BLE 프로토콜 리버스 엔지니어링 · 백엔드(비동기 통신) · GUI · 배포 인프라</sub>
+<sub>2026.07 ~ **배포 완료 후 버전 관리 및 운영 중** · 개인 프로젝트 · 담당: BLE 프로토콜 리버스 엔지니어링 · 백엔드(비동기 통신) · GUI · 배포 인프라</sub>
 
 <p align="center">
   <img src="assets/projects/roastlink-app.png" alt="RoastLink와 Artisan 연동 화면 — 실시간 온도 그래프와 연결 상태" width="900"/>
