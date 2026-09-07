@@ -53,111 +53,7 @@ GitHub 스타 1만 개, Microsoft Store에 배포되는 C# 데스크톱 앱 **Ru
 
 # Projects
 
-## 1. Seoul Landmark Assistant — 온디바이스 AI 랜드마크 인식 앱
-
-<sub>2026.01 ~ 2026.07 · 팀 프로젝트 · 담당: 백엔드, 모델 통합</sub>
-
-<!-- 대표 화면 1장 -->
-<p align="center">
-  <img width="300" height="600" alt="Screenshot_20260822_144545_Gallery" src="https://github.com/user-attachments/assets/6675fa99-011f-404e-9a9d-3d9ea8a8e7b0" alt="Seoul Landmark Assistant 메인 화면" />
-  <img width="300" height="600" alt="Screenshot_20260822_144605_Gallery" src="https://github.com/user-attachments/assets/5486aed2-d321-451c-9486-5ea9781726a8" alt="랜드마크 인식 결과 화면" />
-
-![Inference](https://img.shields.io/badge/Inference-On--Device-238636?style=flat-square)
-![Model](https://img.shields.io/badge/MobileCLIP2--S3-FP16-8E75B2?style=flat-square)
-![Landmarks](https://img.shields.io/badge/Landmarks-25-1f6feb?style=flat-square)
-
-- **네트워크가 끊긴 상황에서도 인식이 동작해야 해서** 추론을 서버가 아닌 단말에 두고, 서버는 인증·제보·검색 로그·통계만 담당하도록 책임을 분리했습니다.
-- **MobileCLIP2-S3 FP16 모델을 ONNX Runtime으로 단말에서 실행**하여 25개 서울 랜드마크(궁궐 세부 건물 포함)를 분류합니다.
-- **중복 로그인 방지를 위해 "1기기 1계정" 정책**을 적용해, 새 기기에서 로그인하면 기존 푸시 토큰을 무효화하도록 FCM 등록 로직을 구성했습니다.
-- 검색 로그에 모델 버전 · 추론 백엔드 · Top-3 스코어 · 지연시간(latency)을 함께 기록해, 배포 후에도 인식 품질을 추적할 수 있게 했습니다.
-<!-- TODO: 정량 결과 1줄 추가 (예: "테스트셋 기준 Top-1 정확도 __%, 단말 평균 추론 __ms") -->
-<!-- TODO: 트레이드오프 1줄 추가 (예: 모델 크기를 줄이며 포기한 것, 남은 과제) -->
-
-<p>
-  <img src="https://img.shields.io/badge/Flutter-02569B?style=flat-square&logo=flutter&logoColor=white" alt="Flutter"/>
-  <img src="https://img.shields.io/badge/FastAPI-009688?style=flat-square&logo=fastapi&logoColor=white" alt="FastAPI"/>
-  <img src="https://img.shields.io/badge/ONNX%20Runtime-005CED?style=flat-square&logo=onnx&logoColor=white" alt="ONNX Runtime"/>
-  <img src="https://img.shields.io/badge/SQLAlchemy-D71F00?style=flat-square&logo=sqlalchemy&logoColor=white" alt="SQLAlchemy"/>
-  <img src="https://img.shields.io/badge/Firebase%20FCM-FFCA28?style=flat-square&logo=firebase&logoColor=black" alt="Firebase FCM"/>
-</p>
-
-[![Repo](https://img.shields.io/badge/Repository-181717?style=for-the-badge&logo=github&logoColor=white)](https://github.com/rhyskim/landmark-on-device-ai-app)
-
----
-
-## 2. CNU Airline — 공항 예약 시스템
-
-<sub>개인 프로젝트 · 범위: 다이어그램을 통한 DB의 개념적, 논리적, 물리적 설계 · 백엔드 · 프론트엔드</sub>
-
-<p align="center">
-  <img width="900" height="440" alt="image" src="https://github.com/user-attachments/assets/5f130535-734c-40f8-afee-b675c0fa479d" alt="항공편 검색 화면" />
-</p>
-<!-- TODO: 관리자 대시보드 스크린샷 준비되면 assets/projects/airline-admin.png로 추가 -->
-
-![DB](https://img.shields.io/badge/Oracle-OCI-F80000?style=flat-square)
-![Integrity](https://img.shields.io/badge/Integrity-Constraint%20%2B%20Conditional%20UPDATE-238636?style=flat-square)
-![Role](https://img.shields.io/badge/Role-Admin%20%2F%20User-1f6feb?style=flat-square)
-
-- **좌석 중복 예약 같은 무결성 문제는 애플리케이션 로직만으로 완전히 막을 수 없다고 판단해**, 좌석 잔여석은 조건부 UPDATE(`잔여석 - 1 WHERE 잔여석 > 0`)로 감소시키되, 어떤 경로로 우회되더라도 음수가 되지 않도록 `CHECK (NO_OF_SEATS >= 0)` 제약을 DB의 최종 방어선으로 두었습니다.
-- **참조 무결성은 관계별로 차등 적용했습니다** — 항공편·좌석·회원이 삭제되면 관련 예약도 `ON DELETE CASCADE`로 함께 정리하고, 취소(CANCEL) 이력은 감사 로그이므로 삭제되지 않도록 의도적으로 보존(RESTRICT)했습니다.
-- Next.js App Router 기반으로 **일반 사용자 / 관리자 역할 분리 인증**을 구현했습니다.
-- 예매 완료 시 **e-티켓 자동 이메일 발송**, 관리자용 **운영 통계 대시보드**를 구성했습니다.
-- 스키마와 샘플 데이터를 `/database/create_and_insert.sql`에 정리해 누구나 동일한 환경에서 재현할 수 있게 했습니다.
-
-<p>
-  <img src="https://img.shields.io/badge/Next.js%2015-000000?style=flat-square&logo=nextdotjs&logoColor=white" alt="Next.js 15"/>
-  <img src="https://img.shields.io/badge/React%2019-61DAFB?style=flat-square&logo=react&logoColor=black" alt="React 19"/>
-  <img src="https://img.shields.io/badge/TypeScript-3178C6?style=flat-square&logo=typescript&logoColor=white" alt="TypeScript"/>
-  <img src="https://img.shields.io/badge/Tailwind%204-06B6D4?style=flat-square&logo=tailwindcss&logoColor=white" alt="Tailwind CSS 4"/>
-  <img src="https://img.shields.io/badge/Oracle-F80000?style=flat-square&logo=oracle&logoColor=white" alt="Oracle"/>
-</p>
-
-[![Repo](https://img.shields.io/badge/Repository-181717?style=for-the-badge&logo=github&logoColor=white)](https://github.com/rhyskim/AirLine_DB)
-
----
-
-## 3. LPCVC 2026 Track 1 — 온디바이스 AI 경량화 대회
-
-<sub><!-- TODO: 기간 · 팀 인원 / 담당 역할 --> Qualcomm LPCVC 2026 · 종료</sub>
-
-![Status](https://img.shields.io/badge/Status-Completed-6e7681?style=flat-square)
-![Task](https://img.shields.io/badge/Task-Image--Text%20Retrieval-1f6feb?style=flat-square)
-![Target](https://img.shields.io/badge/Target-Qualcomm%20AI%20Hub-8E75B2?style=flat-square)
-
-- **Knowledge Distillation → ONNX Export → Qualcomm AI Hub 컴파일/프로파일링 → 추론**으로 이어지는 학습-경량화-배포 파이프라인을 구성했습니다.
-- ViT-S-16, MobileCLIP2-S4, SigLIP2-Base 세 모델을 학습 대상으로 삼아, **대회에 쓰인 대형 학습 데이터셋을 COCO·Visual Genome 등 여러 소스에서 모아 라벨링 형식을 통일하는 작업을 직접 맡았습니다.**
-- 다만 **경량화 결과가 Qualcomm이 제시한 베이스라인 모델과 뚜렷한 차이를 보이지 못해**, 목표했던 성능 개선에는 도달하지 못한 채 대회를 마쳤습니다.
-
-<p>
-  <img src="https://img.shields.io/badge/PyTorch-EE4C2C?style=flat-square&logo=pytorch&logoColor=white" alt="PyTorch"/>
-  <img src="https://img.shields.io/badge/ONNX-005CED?style=flat-square&logo=onnx&logoColor=white" alt="ONNX"/>
-  <img src="https://img.shields.io/badge/HuggingFace-FFD21E?style=flat-square&logo=huggingface&logoColor=black" alt="HuggingFace"/>
-</p>
-
-[![Repo](https://img.shields.io/badge/Repository-181717?style=for-the-badge&logo=github&logoColor=white)](https://github.com/lpcvc-2026-CNU/gogildong)
-
----
-
-## 4. KB 머니룰 기반 안심보이스 — 시니어 금융 Agentic AI
-
-<sub>제8회 Future Finance AI Challenge · 3인 팀 프로젝트 · 프론트/백엔드 구분 없이 이슈 단위로 맡아 전 영역 개발 · 종료</sub>
-
-<p align="center">
-  <img src="assets/projects/kb-flow.png" alt="안심보이스 안심 홈 화면 — 잔액 확인부터 송금까지 규칙으로 통제" width="620"/>
-</p>
-
-![Status](https://img.shields.io/badge/Status-Completed-6e7681?style=flat-square)
-![Domain](https://img.shields.io/badge/Domain-Senior%20FinTech-1f6feb?style=flat-square)
-
-- 시니어 사용자가 음성·텍스트로 금융 업무를 요청할 수 있는 **Agentic AI**를 팀 단위로 개발했습니다.
-- **역할을 프론트엔드/백엔드로 고정하지 않고 이슈 단위로 배분해**, 담당 이슈의 화면부터 API까지 각자 끝까지 책임지는 방식으로 개발했습니다.
-- Python 테스트 2,069개 통과(10 skip), Playwright E2E 21개 통과로 프로토타입의 안정성을 검증했습니다.
-
-> 대회는 종료되었으며, 공개 가능한 범위 내에서 결과를 업데이트할 예정입니다.
-
----
-
-## 5. <현재 운영 중> RoastLink — 커피 로스터기 ↔ Artisan 브리지 프로그램 
+## 1. RoastLink — 커피 로스터기 ↔ Artisan 브리지 프로그램
 
 <sub>2026.07 ~ **배포 완료 후 버전 관리 및 운영 중** · 개인 프로젝트 · 담당: BLE 프로토콜 리버스 엔지니어링 · 백엔드(비동기 통신) · GUI · 배포 인프라</sub>
 
@@ -194,7 +90,39 @@ GitHub 스타 1만 개, Microsoft Store에 배포되는 C# 데스크톱 앱 **Ru
 
 ---
 
-## 6. Multi-Agent Scheduler — LangChain 멀티 에이전트 일정 조율
+## 2. Seoul Landmark Assistant — 온디바이스 AI 랜드마크 인식 앱
+
+<sub>2026.01 ~ 2026.07 · 팀 프로젝트 · 담당: 백엔드, 모델 통합</sub>
+
+<!-- 대표 화면 1장 -->
+<p align="center">
+  <img width="300" height="600" alt="Screenshot_20260822_144545_Gallery" src="https://github.com/user-attachments/assets/6675fa99-011f-404e-9a9d-3d9ea8a8e7b0" alt="Seoul Landmark Assistant 메인 화면" />
+  <img width="300" height="600" alt="Screenshot_20260822_144605_Gallery" src="https://github.com/user-attachments/assets/5486aed2-d321-451c-9486-5ea9781726a8" alt="랜드마크 인식 결과 화면" />
+
+![Inference](https://img.shields.io/badge/Inference-On--Device-238636?style=flat-square)
+![Model](https://img.shields.io/badge/MobileCLIP2--S3-FP16-8E75B2?style=flat-square)
+![Landmarks](https://img.shields.io/badge/Landmarks-25-1f6feb?style=flat-square)
+
+- **네트워크가 끊긴 상황에서도 인식이 동작해야 해서** 추론을 서버가 아닌 단말에 두고, 서버는 인증·제보·검색 로그·통계만 담당하도록 책임을 분리했습니다.
+- **MobileCLIP2-S3 FP16 모델을 ONNX Runtime으로 단말에서 실행**하여 25개 서울 랜드마크(궁궐 세부 건물 포함)를 분류합니다.
+- **중복 로그인 방지를 위해 "1기기 1계정" 정책**을 적용해, 새 기기에서 로그인하면 기존 푸시 토큰을 무효화하도록 FCM 등록 로직을 구성했습니다.
+- 검색 로그에 모델 버전 · 추론 백엔드 · Top-3 스코어 · 지연시간(latency)을 함께 기록해, 배포 후에도 인식 품질을 추적할 수 있게 했습니다.
+<!-- TODO: 정량 결과 1줄 추가 (예: "테스트셋 기준 Top-1 정확도 __%, 단말 평균 추론 __ms") -->
+<!-- TODO: 트레이드오프 1줄 추가 (예: 모델 크기를 줄이며 포기한 것, 남은 과제) -->
+
+<p>
+  <img src="https://img.shields.io/badge/Flutter-02569B?style=flat-square&logo=flutter&logoColor=white" alt="Flutter"/>
+  <img src="https://img.shields.io/badge/FastAPI-009688?style=flat-square&logo=fastapi&logoColor=white" alt="FastAPI"/>
+  <img src="https://img.shields.io/badge/ONNX%20Runtime-005CED?style=flat-square&logo=onnx&logoColor=white" alt="ONNX Runtime"/>
+  <img src="https://img.shields.io/badge/SQLAlchemy-D71F00?style=flat-square&logo=sqlalchemy&logoColor=white" alt="SQLAlchemy"/>
+  <img src="https://img.shields.io/badge/Firebase%20FCM-FFCA28?style=flat-square&logo=firebase&logoColor=black" alt="Firebase FCM"/>
+</p>
+
+[![Repo](https://img.shields.io/badge/Repository-181717?style=for-the-badge&logo=github&logoColor=white)](https://github.com/rhyskim/landmark-on-device-ai-app)
+
+---
+
+## 3. Multi-Agent Scheduler — LangChain 멀티 에이전트 일정 조율
 
 <sub>개인 프로젝트 · 담당: 아키텍처 설계·전체 구현</sub>
 
@@ -235,6 +163,80 @@ flowchart TD
 </p>
 
 [![Repo](https://img.shields.io/badge/Repository-181717?style=for-the-badge&logo=github&logoColor=white)](https://github.com/rhyskim/Multi-Agent-Scheduler)
+
+---
+
+## 4. CNU Airline — 공항 예약 시스템
+
+<sub>2026.04 DB 수업 과제 → 2026.08 개인 고도화 · 개인 프로젝트 · DB 설계 · 백엔드 · 프론트엔드</sub>
+
+<p align="center">
+  <img width="900" height="440" alt="image" src="https://github.com/user-attachments/assets/5f130535-734c-40f8-afee-b675c0fa479d" alt="항공편 검색 화면" />
+</p>
+<!-- TODO: 관리자 대시보드 스크린샷 준비되면 assets/projects/airline-admin.png로 추가 -->
+
+![DB](https://img.shields.io/badge/Oracle-OCI-F80000?style=flat-square)
+![Integrity](https://img.shields.io/badge/Integrity-Constraint%20%2B%20Conditional%20UPDATE-238636?style=flat-square)
+![Role](https://img.shields.io/badge/Role-Admin%20%2F%20User-1f6feb?style=flat-square)
+
+학교 DB 수업 과제로 시작한 프로젝트입니다. 과제 제출로 끝내지 않고, 제출 후에도 계속 마음에 걸리던 동시성·데이터 정합성 문제에 관심이 생겨 4개월 뒤 직접 코드를 다시 열어 고도화했습니다.
+
+- **과제 버전의 예약 API는 잔여석 확인 없이 그냥 `INSERT`만 했습니다.** 동시에 여러 명이 예약하면 초과 판매될 수 있는 구조였다는 걸 뒤늦게 깨닫고, 조회 후 검사 대신 `UPDATE SEATS SET no_of_seats = no_of_seats - 1 WHERE ... AND no_of_seats > 0`으로 차감 한 문장이 곧 잔여석 검사가 되도록 다시 짰습니다. 갱신 행 수가 0이면 매진으로 처리하고, 이 UPDATE가 잡는 행 잠금이 동시 요청을 직렬화합니다.
+- **어떤 경로로 우회되더라도 음수 재고가 남지 않도록** `CHECK (NO_OF_SEATS >= 0)` 제약을 DB의 최종 방어선으로 추가하고, 트랜잭션 커밋/롤백과 복합 기본키 위반(중복 예약) 처리도 함께 넣었습니다. 참조 무결성도 관계별로 차등 적용해, 항공편·좌석·회원 삭제는 예약을 `ON DELETE CASCADE`로 정리하되 취소 이력 테이블은 감사 로그이므로 RESTRICT로 보존했습니다.
+- **과제 버전의 예약 내역 화면은 실제 예약과 무관하게 항공사·공항을 "대한항공/ICN/JFK"로 고정 출력하고, 도착 시각도 출발 시각에 무작정 11시간을 더해 계산하고 있었습니다.** 화면엔 항상 같은 항공사만 뜨는 게 이상해서 다시 들여다보니 하드코딩이었고, `AIRPLAIN` 테이블과 조인해 실제 항공사·공항·도착 시각을 가져오도록 고쳤습니다.
+- **검색 API의 항공편-좌석 조인도 다시 보였습니다.** 양쪽 날짜를 `TO_CHAR`로 문자열 변환해 비교하고 있어 인덱스를 못 타는 구조였는데, 날짜 컬럼을 그대로 비교하고 날짜 필터를 범위 비교(`>= AND <`)로 바꿔 인덱스가 살아나게 정리했습니다.
+- **DB 계정 정보가 소스에 그대로 하드코딩돼 있던 것도 과제 때는 몰랐던 문제였습니다.** 환경변수 + 커넥션 풀(`poolMin`/`poolMax`)로 교체하고, 모든 API 라우트에서 연결이 `finally`에서 항상 닫히도록 정리했습니다.
+
+<p>
+  <img src="https://img.shields.io/badge/Next.js%2015-000000?style=flat-square&logo=nextdotjs&logoColor=white" alt="Next.js 15"/>
+  <img src="https://img.shields.io/badge/React%2019-61DAFB?style=flat-square&logo=react&logoColor=black" alt="React 19"/>
+  <img src="https://img.shields.io/badge/TypeScript-3178C6?style=flat-square&logo=typescript&logoColor=white" alt="TypeScript"/>
+  <img src="https://img.shields.io/badge/Tailwind%204-06B6D4?style=flat-square&logo=tailwindcss&logoColor=white" alt="Tailwind CSS 4"/>
+  <img src="https://img.shields.io/badge/Oracle-F80000?style=flat-square&logo=oracle&logoColor=white" alt="Oracle"/>
+</p>
+
+[![Repo](https://img.shields.io/badge/Repository-181717?style=for-the-badge&logo=github&logoColor=white)](https://github.com/rhyskim/AirLine_DB)
+
+---
+
+## 5. LPCVC 2026 Track 1 — 온디바이스 AI 경량화 대회
+
+<sub><!-- TODO: 기간 · 팀 인원 / 담당 역할 --> Qualcomm LPCVC 2026 · 종료</sub>
+
+![Status](https://img.shields.io/badge/Status-Completed-6e7681?style=flat-square)
+![Task](https://img.shields.io/badge/Task-Image--Text%20Retrieval-1f6feb?style=flat-square)
+![Target](https://img.shields.io/badge/Target-Qualcomm%20AI%20Hub-8E75B2?style=flat-square)
+
+- **Knowledge Distillation → ONNX Export → Qualcomm AI Hub 컴파일/프로파일링 → 추론**으로 이어지는 학습-경량화-배포 파이프라인을 구성했습니다.
+- ViT-S-16, MobileCLIP2-S4, SigLIP2-Base 세 모델을 학습 대상으로 삼아, **대회에 쓰인 대형 학습 데이터셋을 COCO·Visual Genome 등 여러 소스에서 모아 라벨링 형식을 통일하는 작업을 직접 맡았습니다.**
+- 다만 **경량화 결과가 Qualcomm이 제시한 베이스라인 모델과 뚜렷한 차이를 보이지 못해**, 목표했던 성능 개선에는 도달하지 못한 채 대회를 마쳤습니다.
+
+<p>
+  <img src="https://img.shields.io/badge/PyTorch-EE4C2C?style=flat-square&logo=pytorch&logoColor=white" alt="PyTorch"/>
+  <img src="https://img.shields.io/badge/ONNX-005CED?style=flat-square&logo=onnx&logoColor=white" alt="ONNX"/>
+  <img src="https://img.shields.io/badge/HuggingFace-FFD21E?style=flat-square&logo=huggingface&logoColor=black" alt="HuggingFace"/>
+</p>
+
+[![Repo](https://img.shields.io/badge/Repository-181717?style=for-the-badge&logo=github&logoColor=white)](https://github.com/lpcvc-2026-CNU/gogildong)
+
+---
+
+## 6. KB 머니룰 기반 안심보이스 — 시니어 금융 Agentic AI
+
+<sub>제8회 Future Finance AI Challenge · 3인 팀 프로젝트 · 프론트/백엔드 구분 없이 이슈 단위로 맡아 전 영역 개발 · 종료</sub>
+
+<p align="center">
+  <img src="assets/projects/kb-flow.png" alt="안심보이스 안심 홈 화면 — 잔액 확인부터 송금까지 규칙으로 통제" width="620"/>
+</p>
+
+![Status](https://img.shields.io/badge/Status-Completed-6e7681?style=flat-square)
+![Domain](https://img.shields.io/badge/Domain-Senior%20FinTech-1f6feb?style=flat-square)
+
+- 시니어 사용자가 음성·텍스트로 금융 업무를 요청할 수 있는 **Agentic AI**를 팀 단위로 개발했습니다.
+- **역할을 프론트엔드/백엔드로 고정하지 않고 이슈 단위로 배분해**, 담당 이슈의 화면부터 API까지 각자 끝까지 책임지는 방식으로 개발했습니다.
+- Python 테스트 2,069개 통과(10 skip), Playwright E2E 21개 통과로 프로토타입의 안정성을 검증했습니다.
+
+> 대회는 종료되었으며, 공개 가능한 범위 내에서 결과를 업데이트할 예정입니다.
 
 ---
 
