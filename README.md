@@ -37,7 +37,7 @@
 
 ---
 <details>
-<summary>거름이 된 실패에 대하여</summary>
+<summary><strong>거름이 된 실패에 대하여</strong></summary>
 
 프로젝트를 소개하기 전에, 머지되지 못한 PR 하나를 먼저 이야기하고 싶습니다.
 
@@ -49,6 +49,8 @@ GitHub 스타 1만 개, Microsoft Store에 배포되는 C# 데스크톱 앱 **Ru
 
 > 이 깨달음은 이후 아래 프로젝트 번호 2번 온디바이스 앱의 다국어 지원 구조를 만들 때, ko·en·zh·ja 네 언어의 번역을 단일 맵(`app_translations.dart`)에 모으고 UI는 키로만 조회하는 중앙 관리형 구조로 이어졌습니다.
 </details>
+
+---
 
 # Projects
 
