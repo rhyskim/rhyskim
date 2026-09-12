@@ -224,7 +224,7 @@ flowchart TD
 
 ## 6. KB 머니룰 기반 안심보이스 — 시니어 금융 Agentic AI
 
-<sub>제8회 Future Finance AI Challenge · 3인 팀 프로젝트 · 프론트/백엔드 구분 없이 이슈 단위로 맡아 전 영역 개발 · 종료</sub>
+<sub>2026.07.20~2026.08.03 | 제8회 Future Finance AI Challenge· 3인 팀 프로젝트 · 프론트/백엔드 구분 없이 이슈 단위로 맡아 전 영역 개발</sub>
 
 <p align="center">
   <img src="assets/projects/kb-flow.png" alt="안심보이스 안심 홈 화면 — 잔액 확인부터 송금까지 규칙으로 통제" width="620"/>
